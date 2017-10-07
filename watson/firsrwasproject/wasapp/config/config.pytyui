@@ -1,0 +1,26 @@
+from project.config.routes import routes
+
+debug = {
+    'enabled': False,
+}
+routes = {
+    'index': {
+        'path': '/',
+        'options': {'controller': 'wasapp.controllers.Index'}
+    },
+    'testpage': {
+        'path': '/testpage',
+        'accepts': ('GET', 'POST'),
+        'options': {
+            'controller': 'wasapp.controllers.Testpage'
+        }
+    },
+    'bpm': {
+        'path': '/bpm',
+        'options': {
+            'controller': 'wasapp.controllers.Bpm'
+        }
+    }
+
+}
+
