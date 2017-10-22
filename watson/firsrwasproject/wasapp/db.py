@@ -5,55 +5,98 @@ import sqlite3
 # Open database, creating it if necessary.
 
 
-def testfunction(dataarray):
+# def testfunction(dataarray):
 
-    conn = sqlite3.connect('example.db')
-    c = conn.cursor()
+#     conn = sqlite3.connect('example.db')
+#     c = conn.cursor()
 
-    # Create table
-    c.execute('''CREATE TABLE stocks
-                 (date text, trans text, symbol text, qty real, price real)''')
+#     # Create table
+#     c.execute('''CREATE TABLE stocks
+#                  (date text, trans text, symbol text, qty real, price real)''')
 
-    # Insert a row of data
-    c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+#     # Insert a row of data
+#     c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
 
-    # Save (commit) the changes
-    conn.commit()
-    for row in c.execute('SELECT * FROM stocks ORDER BY price'):
-        print (row)
-    # We can also close the connection if we are done with it.
-    # Just be sure any changes have been committed or they will be lost.
-    conn.close()
+#     # Save (commit) the changes
+#     conn.commit()
+#     for row in c.execute('SELECT * FROM stocks ORDER BY price'):
+#         print (row)
+#     # We can also close the connection if we are done with it.
+#     # Just be sure any changes have been committed or they will be lost.
+#     conn.close()
 
-    # Open database, creating it if necessary.
-    #
-    # db = dbm.open('databseFile', 'c')
-    # # Record some values
-    # db[b'hello'] = b'there'
-    # db['www.python.org'] = 'Python Website'
-    # db['www.cnn.com'] = 'Cable News Network'
-    # print(db.get('www.python.org'))
-    #
-    # # Note that the keys are considered bytes now.
-    # assert db[b'www.python.org'] == b'Python Website'
-    # # Notice how the value is now in bytes.
-    # assert db['www.cnn.com'] == b'Cable News Network'
-    # print(1)
-    # # Often-used methods of the dict interface work too.
-    # print(db.get('python.org', 'not present'))
-    # print(1)
-    # k = db.firstkey()
-    # while k != None:
-    #     print(k)
-    #     print(db.get(k).decode('ascii'))
-    #
-    #     k = db.nextkey(k)
-    # # Storing a non-string key or value will raise an exception (most
-    # # likely a TypeError).
-    # db['www.yahoo.com'] = '4'
-    # print(db['www.python.org'].decode('ascii'))
-    # print(db['www.yahoo.com'].decode('ascii'))
-    # print(db.get('www.yahoo.com', b'not present').decode('ascii'))
-    #
-    # # Close when done.
-    # db.close()
+class sqliteDB:
+    conn = None
+    def connect(self):
+        print('checking databse file')
+        self.conn = sqlite3.connect('Ehealth.db')
+        c = self.conn.cursor()
+        print('checking tables')
+        c.execute('''CREATE TABLE IF NOT EXISTS user(
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            username text, 
+            password text, 
+            usernickname text)''')
+
+        c.execute('''CREATE TABLE IF NOT EXISTS device
+                    (dID INTEGER PRIMARY KEY, uid INTEGER, dName text, dDiscription text)''')
+
+        c.execute('''CREATE TABLE IF NOT EXISTS eviDataTimeStamp
+                    (dtime text, dtimelocation text, dID INTEGER, temp real, humi real,PRIMARY KEY (dtime, dtimelocation, dID))''')
+        self.conn.commit()
+        # for row in c.execute('SELECT * FROM user'):
+        #     print ("user infor")
+        #     print (row)
+
+        # for row in c.execute('SELECT * FROM device'):
+        #     print ("device infor")
+        #     print (row)
+
+
+    def query(self, sql):
+        try:
+            c = self.conn.cursor()
+            print('execute sql '+sql)
+            c.execute(sql)
+            
+        except (AttributeError):
+            print('Connecting database')
+            self.connect()
+            c = self.conn.cursor()
+            c.execute(sql)
+            # self.conn.close()
+        return c
+    def insertQuery(self, sql):
+        try:
+            c = self.conn.cursor()
+            print('execute sql '+sql)
+            c.execute(sql)
+        
+        except (AttributeError):
+            print('Connecting database')
+            self.connect()
+            c = self.conn.cursor()
+            c.execute(sql)
+            self.conn.commit()
+            # self.conn.close()
+        return c
+    
+
+
+
+
+# db = sqliteDB()
+# sql = 'SELECT * FROM user'
+# cur = db.query(sql)
+# cur = db.query(sql)
+
+
+
+
+# # wait a long time for the Mysql connection to timeout
+# cur = db.query(sql)
+# for row in cur:
+#     print ("user infor")
+#     print (row)
+
+    

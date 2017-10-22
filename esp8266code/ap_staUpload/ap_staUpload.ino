@@ -150,7 +150,7 @@ void putdata(){
 
 
   
-    String domain="http://10.0.0.107:8000/putdata";
+    String domain="http://192.168.1.171:8000/putdata";
     if (userName.length()>1){
       String suffixData="?userName="+userName+"&pass="+accountPass+"&dID="+dID+"&temp="+t+"&humi="+h;
        HTTPClient http;  //Declare an object of class HTTPClient
