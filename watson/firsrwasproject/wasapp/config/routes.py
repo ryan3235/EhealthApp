@@ -6,7 +6,8 @@ routes = {
     'testpage':{'path':'/testpage','options': {'controller': 'wasapp.controllers.Testpage'}},
     'bpm':{'path':'/bpm','options': {'controller': 'wasapp.controllers.Bpm'}},
     'login':{'path':'/login','options': {'controller': 'wasapp.controllers.Login'}},
+    'putdata':{'path':'/putdata','options': {'controller': 'wasapp.controllers.Putdata','format': 'json'}}
  # 'route_test': {'path': '/resource','accepts': ('GET', 'POST')'options': {'controller': 'wasapp.controllers.Resource'}}
-    'MyHome':{'path':'/myData','options': {'controller': 'wasapp.controllers.Mydata'},'defaults': {'format': 'json'}}
+ #    'MyHome':{'path':'/myData','options': {'controller': 'wasapp.controllers.Mydata'},'defaults': {'format': 'json'}}
 }
 #controllerBpm

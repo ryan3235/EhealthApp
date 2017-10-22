@@ -10,6 +10,8 @@ from wasapp.controllers.testpage import Testpage
 
 from wasapp.controllers.bpm import Bpm
 from wasapp.controllers.login import Login
+from wasapp.controllers.putdata import Putdata
+
 # from wasapp import forms
 
 # class testpage(controllers.Rest):#controller file name

@@ -12,3 +12,6 @@ class Testpage(controllers.Rest):
         data = self.request.post['data']
         print(data)
         pass
+
+
+# 'putdata':{'path': '/putdata', 'options': {'controller': 'wasapp.controllers.Putdata'}},
