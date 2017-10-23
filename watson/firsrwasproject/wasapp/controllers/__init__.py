@@ -8,9 +8,10 @@ from wasapp.controllers.index import Index
 # __all__ = ['Index']
 from wasapp.controllers.testpage import Testpage
 
-from wasapp.controllers.bpm import Bpm
+from wasapp.controllers.showdata import ShowData
 from wasapp.controllers.login import Login
 from wasapp.controllers.putdata import Putdata
+from wasapp.controllers.signup import Signup
 
 # from wasapp import forms
 

@@ -8,6 +8,9 @@ class Testpage(controllers.Rest):
         print('in test controller')
         # print('Welcome to testPage v{0}!'.format(framework.__version__))
         return 'Welcome to testPage v{0}!'.format(framework.__version__)
+        # controllers._response
+        # render 
+    
     def PUT(self):
         data = self.request.post['data']
         print(data)
