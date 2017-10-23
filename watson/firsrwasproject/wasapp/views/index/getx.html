@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome to Watson!</title>
+</head>
+
+<body>
+    <!-- <h1>{{ content }}</h1> -->
+    <h1>{{ hello[0] }}</h1>
+    <ul>
+        {% for mynum in hello %}
+        <li>{{mynum}}</li>
+        {% endfor %}
+    </ul>
+    <p>1You are now on your way to creating your first application using Watson.</p>
+    <p>Read more about Watson in <a href="http://watson-framework.readthedocs.org/">the documentation.</a>
+        <form action="/bpm" method="post">
+            First name: <input type="text" value="Mickey"><br> Last name: <input type="text" name="lastname" value="Mouse"><br>
+            <input type="submit" value="Submit">
+            <form>
+</body>
+
+</html>
