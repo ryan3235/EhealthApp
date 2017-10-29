@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 from watson import framework
 from watson.framework import controllers
-from watson.framework import config
+
 
 class Testpage(controllers.Rest):
-    # @config(renderer='json')
     def GET(self):
         print('in test controller')
+        print('new line test')
+        # self.response = '23s'
         # print('Welcome to testPage v{0}!'.format(framework.__version__))
-        return 'Welcome to testPage v{0}!'.format(framework.__version__)
-        # return {'content':'Hello!'}
-        # return render_template('get.json', user='x', title='user.name')
+        # return json.dumps({'123':123})
+        # return{'flash_messages': self.flash_messages}
         # controllers._response
         # render 
     

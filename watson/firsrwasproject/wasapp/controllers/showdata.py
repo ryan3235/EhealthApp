@@ -39,6 +39,7 @@ class ShowData(controllers.Rest):
                 eviDataResult=[]
                 for each in newResult:
                     a = datetime.strptime(each[0], '%Y-%m-%d %H:%M:%S')
+                    print(each[2])
                     eviDataResult.append((int(a.timestamp() * 1000),each[1],each[2]))
 
                 if(eviDataResult.__len__()):

@@ -13,3 +13,4 @@ routes = {
  #    'MyHome':{'path':'/myData','options': {'controller': 'wasapp.controllers.Mydata'},'defaults': {'format': 'json'}}
 }
 #controllerBpm
+# 'testpage':{'path':'/testpage','options': {'controller': 'wasapp.controllers.Testpage'}},
