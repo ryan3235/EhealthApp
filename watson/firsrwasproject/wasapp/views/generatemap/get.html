@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<title>showMap</title>
+        <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        var tempLowLimit = 59;
+        var tempHighLimit = 70;
+        var map;
+        var geocoder;
+
+        //get weather info from python
+        var weatherDict = jQuery.parseJSON('{{ weatherInfo|safe }}');
+        var city = "";
+
+        //redmarker and bluemarker
+        var blueIcon = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|87CEEB";
+        var redIcon = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569";
+
+      //init the map
+      function initMap() {
+        geocoder = new google.maps.Geocoder();
+        map = new google.maps.Map(document.getElementById('allmap'), {
+          center: {lat: -33.514, lng: 151.124},
+          zoom: 9
+        });
+        for(city in weatherDict){
+            codeAddress(city);
+        }
+      }
+
+      //convert address name to point(lat,lng)
+      function codeAddress(address) {
+        geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == 'OK') {
+            var address = results[0].address_components[0].long_name;
+            var temp = weatherDict[address];
+            var image = '';
+            if(temp > tempHighLimit){
+                image = redIcon;
+            }else{
+                image = blueIcon;
+            }
+
+            //convert Fahrenheit to Degrees
+            temp = Math.round((temp-32)/1.8);
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+            });
+            marker.setIcon(image);
+            marker.setLabel(temp+"");
+         } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+  }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvxcwgWuulFWezzur4roNcQPuO5YMpjNg&language=en&callback=initMap"
+    async defer></script>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+
+
+
+

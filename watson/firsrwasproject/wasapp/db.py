@@ -32,11 +32,17 @@ class sqliteDB:
         self.conn = sqlite3.connect('Ehealth.db')
         c = self.conn.cursor()
         print('checking tables')
+
+        #建立新表 保存用户的年龄等信息
         c.execute('''CREATE TABLE IF NOT EXISTS user(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
-            username text, 
-            password text, 
-            usernickname text)''')
+            username text,
+            password text,
+            usernickname text,
+            userAge text,
+            rheumatoidAge text,
+            email text,
+            city text)''')
 
         c.execute('''CREATE TABLE IF NOT EXISTS device
                     (dID INTEGER PRIMARY KEY, uid INTEGER, dName text, dDiscription text)''')

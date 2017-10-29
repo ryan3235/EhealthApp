@@ -12,6 +12,7 @@ from wasapp.controllers.showdata import ShowData
 from wasapp.controllers.login import Login
 from wasapp.controllers.putdata import Putdata
 from wasapp.controllers.signup import Signup
+from wasapp.controllers.generatemap import Generatemap
 
 # from wasapp import forms
 

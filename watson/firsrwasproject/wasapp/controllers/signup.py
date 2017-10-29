@@ -10,6 +10,10 @@ class Signup(controllers.Rest):
             userName = self.request.get['userName']
             password = self.request.get['pass']
             userNicname = self.request.get['userNicname']
+            age = self.request.get['userAge']
+            rheumatoidAge = self.request.get['rheumatoidAge']
+            email = self.request.get['email']
+            city = self.request.get['city']
             dName = self.request.get['dName']
             dID = self.request.get['dID']
             dd = self.request.get['dd']
@@ -20,7 +24,7 @@ class Signup(controllers.Rest):
             result=result.fetchall()
             if(len(result)==0):
                 # regi
-                sql='INSERT INTO user (username,password,usernickname) VALUES (\''+userName+'\',\''+password+'\',\''+userNicname+'\')';
+                sql='INSERT INTO user (username,password,usernickname,userAge,rheumatoidAge,email,city) VALUES (\''+userName+'\',\''+password+'\',\''+userNicname+'\',\''+age+'\',\''+rheumatoidAge+'\',\''+email+'\',\''+city+'\')';
                 print(sql)
                 print('\n')
                 result=sqliteDB().insertQuery(sql)

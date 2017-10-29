@@ -28,21 +28,22 @@ class ShowData(controllers.Rest):
             result=sqliteDB().query(sql)
             result=result.fetchall()
             dID=0
-            
+            listDiction = {}
             for dinfor in result:
                 dID=dinfor[0]
                 print(dID)
                 sql='SELECT dtimelocation as mytime, temp, humi  FROM eviDataTimeStamp where dID = \''+str(dID)+'\''
                 newResult=sqliteDB().query(sql)
-                
-                listDiction={}
+
                 # print(newResult)
                 eviDataResult=[]
                 for each in newResult:
                     a = datetime.strptime(each[0], '%Y-%m-%d %H:%M:%S')
                     eviDataResult.append((int(a.timestamp() * 1000),each[1],each[2]))
-                listDeviceID=eviDataResult[0][0]
-                listDiction[str(dID)]=eviDataResult
+
+                if(eviDataResult.__len__()):
+                    listDeviceID=eviDataResult[0][0]
+                    listDiction[str(dID)]=eviDataResult
 
 
             # print(listDiction)
@@ -51,12 +52,6 @@ class ShowData(controllers.Rest):
             return {'Sensordata': listDiction}
         else:
             return 'Welcome to Watson v{0}! bpm'.format(framework.__version__)
-          
-    
-    
-
-
-
         
     def POST(self):
         data = self.request.post
