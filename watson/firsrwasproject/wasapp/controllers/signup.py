@@ -6,7 +6,7 @@ from wasapp.db import sqliteDB
 class Signup(controllers.Rest):
     def GET(self):
         if 'userName' in self.request.get:
-            print('in putdata controller')
+            print('in Signup controller')
             userName = self.request.get['userName']
             password = self.request.get['pass']
             userNicname = self.request.get['userNicname']

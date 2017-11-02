@@ -12,7 +12,18 @@ from wasapp.controllers.showdata import ShowData
 from wasapp.controllers.login import Login
 from wasapp.controllers.putdata import Putdata
 from wasapp.controllers.signup import Signup
+
 from wasapp.controllers.generatemap import Generatemap
+
+
+# test classes
+from wasapp.controllers.indextest import Indextest
+from wasapp.controllers.showdatatest import ShowDatatest
+from wasapp.controllers.logintest import Logintest
+from wasapp.controllers.putdatatest import Putdatatest
+from wasapp.controllers.signuptest import Signuptest
+
+
 
 # from wasapp import forms
 

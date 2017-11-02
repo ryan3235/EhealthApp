@@ -18,4 +18,5 @@ class Index(controllers.Rest):
         # return ('get.html',num=123)
         # return {'hello': (0,1,2),'hi': (4,5,6)}
         # return 'hello'=(1,2,3)
-        return {'hello': [2,3,4]}
+        # return {'hello': [2,3,4]}
+        return None
